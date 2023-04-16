@@ -13,6 +13,43 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+            .block1 {
+                display: block;
+                width: 50%;
+                border: none;
+                background-color: #04AA6D;
+                color: white;
+                padding: 14px 28px;
+                font-size: 16px;
+                cursor: pointer;
+                text-align: center;
+                position: center;
+            }
+
+            .block1:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            .block2 {
+                display: block;
+                width: 50%;
+                border: none;
+                background-color: #FF0000;
+                color: white;
+                padding: 14px 28px;
+                font-size: 16px;
+                cursor: pointer;
+                text-align: center;
+                position: center;
+            }
+
+            .block1:hover {
+                background-color: #ddd;
+                color: black;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -29,6 +66,10 @@
 
             <!-- Page Content -->
             <main>
+                @if(auth()->user()->type == 'admin')
+                    <h1> <a href='{{ url('/students') }}'><button class="bg-center block1">STUDENTS MANAGEMENT SYSTEM</button></a></h1>
+                    <h1> <a href='{{ url('/payments') }}'><button class="bg-center block2">PAYMENT MANAGEMENT SYSTEM</button></a></h1>
+                @endif
                 {{ $slot }}
             </main>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Student;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
         $this->configureRateLimiting();
+
 
         $this->routes(function () {
             Route::middleware('api')
@@ -33,7 +36,12 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+
         });
+
+
+
     }
 
     /**
